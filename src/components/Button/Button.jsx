@@ -1,7 +1,5 @@
-const Button = ({ onClick, children, ...rest }) => (
-	<button onClick={onClick}>
+const Button = ({onClick, children}) => (<button onClick={onClick}>
 		{children}
-	</button>
-)
+	</button>)
 
 export default Button;

@@ -1,29 +1,24 @@
 import Button from "../Button/Button.jsx";
-import CONSTANTS from "../../constants.js";
 
-const Options = ({updateFeedback, feedbackData}) => {
-	const { good, neutral, bad } = feedbackData;
-	let totalFeedback = good + neutral + bad;
+const Options = ({updateFeedback, totalFeedback}) => {
 	
-	return (
-		<>
+	return (<>
 			<Button onClick={() => updateFeedback('good')}>
-				{CONSTANTS.STATE.GOOD}
+				Good
 			</Button>
 			
 			<Button onClick={() => updateFeedback('neutral')}>
-				{CONSTANTS.STATE.NEUTRAL}
+				Neutral
 			</Button>
 			
 			<Button onClick={() => updateFeedback('bad')}>
-				{CONSTANTS.STATE.BAD}
+				Bad
 			</Button>
 			
 			{totalFeedback !== 0 && <Button onClick={() => updateFeedback('reset')}>
-				{CONSTANTS.RESET}
+				Reset
 			</Button>}
-		</>
-	)
+		</>)
 }
 
 export default Options;

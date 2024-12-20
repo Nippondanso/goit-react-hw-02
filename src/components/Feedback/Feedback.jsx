@@ -1,48 +1,30 @@
 import FeedbackLine from "./FeedbackLine.jsx";
-import CONSTANTS from "../../constants.js";
-import {useEffect, useState} from "react";
+import Notification from "../Notification/Notification.jsx";
 
-
-const Feedback = ({good, neutral, bad}) => {
-	const [totalFeedback, setTotalFeedback] = useState(0);
-	const [positiveFeedback, setPositiveFeedback] = useState(0);
-	
-	useEffect(() => {
-		setTotalFeedback( good + neutral + bad);
-		setPositiveFeedback(Math.round(((good + neutral) / (good + neutral + bad)) * 100))
-		
-		}, [good, neutral, bad]
-	)
-	
-	return (
-		<div className="feedback">
-			{
-				good + neutral + bad !== 0
-					? <>
-						<FeedbackLine value={good}>
-							{CONSTANTS.STATE.GOOD}
-						</FeedbackLine>
-						
-						<FeedbackLine value={neutral}>
-							{CONSTANTS.STATE.NEUTRAL}
-						</FeedbackLine>
-						
-						<FeedbackLine value={bad}>
-							{CONSTANTS.STATE.BAD}
-						</FeedbackLine>
-						
-						<FeedbackLine value={totalFeedback}>
-							{CONSTANTS.TOTAL}
-						</FeedbackLine>
-						
-						<FeedbackLine value={`${positiveFeedback}%`}>
-							{CONSTANTS.POSITIVE}
-						</FeedbackLine>
-					</>
-					: <p>No feedback yet</p>
-			}
-		</div>
-	)
+const Feedback = ({good, neutral, bad, totalFeedback, positiveFeedback}) => {
+	return (<div className="feedback">
+			{totalFeedback !== 0 ? <>
+				<FeedbackLine value={good}>
+					{"Good"}
+				</FeedbackLine>
+				
+				<FeedbackLine value={neutral}>
+					{"Neutral"}
+				</FeedbackLine>
+				
+				<FeedbackLine value={bad}>
+					{"Bad"}
+				</FeedbackLine>
+				
+				<FeedbackLine value={totalFeedback}>
+					{"Total"}
+				</FeedbackLine>
+				
+				<FeedbackLine value={`${positiveFeedback}%`}>
+					{"Positive"}
+				</FeedbackLine>
+			</> : <Notification message={"No feedback yet."}/>}
+		</div>)
 }
 
 export default Feedback;
