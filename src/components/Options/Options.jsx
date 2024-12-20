@@ -15,7 +15,7 @@ const Options = ({updateFeedback, totalFeedback}) => {
 				Bad
 			</Button>
 			
-			{totalFeedback !== 0 && <Button onClick={() => updateFeedback('reset')}>
+			{totalFeedback >0 && <Button onClick={() => updateFeedback('reset')}>
 				Reset
 			</Button>}
 		</>)
